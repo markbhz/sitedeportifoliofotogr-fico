@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio Fotográfico</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* Estilos personalizados para o menu de navegação */
+        .nav-link {
+            @apply px-4 py-2 rounded-full font-semibold transition-colors duration-300 cursor-pointer;
+        }
+        .nav-link.active {
+            @apply bg-purple-600 text-white shadow-lg;
+        }
+        .nav-link:not(.active):hover {
+            @apply text-purple-600;
+        }
+        /* Efeito de hover nas imagens da galeria */
+        .gallery-item {
+            @apply relative overflow-hidden rounded-2xl shadow-xl transition-transform duration-300;
+        }
+        .gallery-item img {
+            @apply transform transition-transform duration-500 hover:scale-110;
+        }
+        /* Efeito de sobreposição de texto na imagem */
+        .overlay {
+            @apply absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 transition-opacity duration-300;
+        }
+        .gallery-item:hover .overlay {
+            @apply opacity-100;
+        }
+
+        /* Estilos para o carrossel */
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem; /* rounded-3xl */
+        }
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel-track img {
+            min-width: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        .carousel-button {
+            @apply absolute top-1/2 -translate-y-1/2 bg-white bg-opacity-50 text-gray-800 p-2 rounded-full shadow-lg z-10;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Cabeçalho e Navegação -->
+    <header class="bg-white sticky top-0 z-50 shadow-md">
+        <div class="container mx-auto p-4 flex flex-col md:flex-row justify-between items-center">
+            <h1 class="text-3xl font-extrabold text-purple-700 mb-4 md:mb-0">Seu Nome Fotografia</h1>
+            <nav class="flex space-x-2 sm:space-x-4">
+                <a href="#home" class="nav-link active" data-target="home">Início</a>
+                <a href="#casamentos" class="nav-link" data-target="casamentos">Casamentos</a>
+                <a href="#ensaios" class="nav-link" data-target="ensaios">Ensaios</a>
+                <a href="#contato" class="nav-link" data-target="contato">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="container mx-auto p-6 md:p-12">
+
+        <!-- Seção de Início (visível por padrão) -->
+        <section id="home" class="py-12 md:py-16">
+            <h2 class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-8">Capturando Momentos Inesquecíveis</h2>
+            
+            <div class="carousel-container max-w-4xl mx-auto shadow-2xl">
+                <div class="carousel-track">
+                    <img class="w-full h-auto" src="https://placehold.co/1200x800/764ba2/FFFFFF?text=Foto+Início+1" alt="Foto principal 1 do carrossel">
+                    <img class="w-full h-auto" src="https://placehold.co/1200x800/6A45FF/FFFFFF?text=Foto+Início+2" alt="Foto principal 2 do carrossel">
+                    <img class="w-full h-auto" src="https://placehold.co/1200x800/667eea/FFFFFF?text=Foto+Início+3" alt="Foto principal 3 do carrossel">
+                    <img class="w-full h-auto" src="https://placehold.co/1200x800/4F46E5/FFFFFF?text=Foto+Início+4" alt="Foto principal 4 do carrossel">
+                    <img class="w-full h-auto" src="https://placehold.co/1200x800/6D28D9/FFFFFF?text=Foto+Início+5" alt="Foto principal 5 do carrossel">
+                    <img class="w-full h-auto" src="https://placehold.co/1200x800/7C3AED/FFFFFF?text=Foto+Início+6" alt="Foto principal 6 do carrossel">
+                    <img class="w-full h-auto" src="https://placehold.co/1200x800/4C358F/FFFFFF?text=Foto+Início+7" alt="Foto principal 7 do carrossel">
+                    <img class="w-full h-auto" src="https://placehold.co/1200x800/4F2F80/FFFFFF?text=Foto+Início+8" alt="Foto principal 8 do carrossel">
+                    <img class="w-full h-auto" src="https://placehold.co/1200x800/41196E/FFFFFF?text=Foto+Início+9" alt="Foto principal 9 do carrossel">
+                    <img class="w-full h-auto" src="https://placehold.co/1200x800/6A45FF/FFFFFF?text=Foto+Início+10" alt="Foto principal 10 do carrossel">
+                </div>
+                <button id="prevBtn" class="carousel-button left-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <button id="nextBtn" class="carousel-button right-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+        </section>
+
+        <!-- Seção de Casamentos (invisível por padrão) -->
+        <section id="casamentos" class="py-12 md:py-16 hidden">
+            <h2 class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-8">Momentos de Casamento</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <div class="gallery-item">
+                    <img src="https://placehold.co/800x600/6A45FF/FFFFFF?text=Casamento+1" alt="Foto de casamento 1" class="w-full h-auto">
+                    <div class="overlay">
+                        <p class="text-white text-lg font-bold">Casamento ao ar livre</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/800x600/764ba2/FFFFFF?text=Casamento+2" alt="Foto de casamento 2" class="w-full h-auto">
+                    <div class="overlay">
+                        <p class="text-white text-lg font-bold">Celebração noturna</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/800x600/667eea/FFFFFF?text=Casamento+3" alt="Foto de casamento 3" class="w-full h-auto">
+                    <div class="overlay">
+                        <p class="text-white text-lg font-bold">Detalhes da festa</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/800x600/4F46E5/FFFFFF?text=Casamento+4" alt="Foto de casamento 4" class="w-full h-auto">
+                    <div class="overlay">
+                        <p class="text-white text-lg font-bold">Cerimônia</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/800x600/6D28D9/FFFFFF?text=Casamento+5" alt="Foto de casamento 5" class="w-full h-auto">
+                    <div class="overlay">
+                        <p class="text-white text-lg font-bold">Beleza da noiva</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/800x600/7C3AED/FFFFFF?text=Casamento+6" alt="Foto de casamento 6" class="w-full h-auto">
+                    <div class="overlay">
+                        <p class="text-white text-lg font-bold">Pôr do sol</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Ensaios (invisível por padrão) -->
+        <section id="ensaios" class="py-12 md:py-16 hidden">
+            <h2 class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-8">Ensaios e Retratos</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <div class="gallery-item">
+                    <img src="https://placehold.co/800x600/4C358F/FFFFFF?text=Ensaio+1" alt="Ensaio fotográfico 1" class="w-full h-auto">
+                    <div class="overlay">
+                        <p class="text-white text-lg font-bold">Retrato em estúdio</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/800x600/4F2F80/FFFFFF?text=Ensaio+2" alt="Ensaio fotográfico 2" class="w-full h-auto">
+                    <div class="overlay">
+                        <p class="text-white text-lg font-bold">Ensaio de família</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/800x600/41196E/FFFFFF?text=Ensaio+3" alt="Ensaio fotográfico 3" class="w-full h-auto">
+                    <div class="overlay">
+                        <p class="text-white text-lg font-bold">Ensaio urbano</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/800x600/6A45FF/FFFFFF?text=Ensaio+4" alt="Ensaio fotográfico 4" class="w-full h-auto">
+                    <div class="overlay">
+                        <p class="text-white text-lg font-bold">Ensaio de gestante</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/800x600/764ba2/FFFFFF?text=Ensaio+5" alt="Ensaio fotográfico 5" class="w-full h-auto">
+                    <div class="overlay">
+                        <p class="text-white text-lg font-bold">Fotos de paisagem</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://placehold.co/800x600/667eea/FFFFFF?text=Ensaio+6" alt="Ensaio fotográfico 6" class="w-full h-auto">
+                    <div class="overlay">
+                        <p class="text-white text-lg font-bold">Ensaio infantil</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção de Contato (invisível por padrão) -->
+        <section id="contato" class="py-12 md:py-16 hidden">
+            <h2 class="text-4xl md:text-5xl font-bold text-center text-gray-900 mb-8">Entre em Contato</h2>
+            <div class="max-w-xl mx-auto bg-white p-8 rounded-3xl shadow-lg">
+                <p class="text-center text-lg mb-6 text-gray-600">
+                    Preencha o formulário abaixo para orçamentos e informações.
+                </p>
+                <!-- Formulário de Contato -->
+                <form id="contact-form" class="space-y-4">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700">Nome</label>
+                        <input type="text" id="name" name="name" class="mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500" placeholder="Seu nome" required>
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
+                        <input type="email" id="email" name="email" class="mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500" placeholder="seu.email@exemplo.com" required>
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700">Mensagem</label>
+                        <textarea id="message" name="message" rows="4" class="mt-1 block w-full rounded-xl border-gray-300 shadow-sm focus:border-purple-500 focus:ring-purple-500" placeholder="Escreva sua mensagem aqui..." required></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="w-full md:w-auto gradient-bg text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                            Enviar Mensagem
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="text-center p-6 text-gray-500 bg-white shadow-inner">
+        &copy; 2025 Seu Nome Fotografia. Todos os direitos reservados.
+    </footer>
+
+    <script>
+        // Lógica de navegação para alternar entre as seções
+        document.addEventListener('DOMContentLoaded', () => {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('section');
+            const form = document.getElementById('contact-form');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    // Remove a classe 'active' de todos os links e adiciona ao link clicado
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    e.currentTarget.classList.add('active');
+
+                    // Esconde todas as seções e mostra a seção alvo
+                    const targetId = e.currentTarget.getAttribute('data-target');
+                    sections.forEach(sec => {
+                        sec.classList.add('hidden');
+                    });
+                    document.getElementById(targetId).classList.remove('hidden');
+                });
+            });
+
+            // Lida com o envio do formulário (apenas demonstração)
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                // Usando uma div no lugar de alert()
+                const messageBox = document.createElement('div');
+                messageBox.className = 'fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-lg shadow-xl p-6 text-center z-50';
+                messageBox.innerHTML = `
+                    <p class="text-lg font-bold text-gray-800 mb-4">Mensagem enviada com sucesso!</p>
+                    <p class="text-sm text-gray-600">Esta é uma demonstração. O formulário não tem funcionalidade de backend.</p>
+                    <button class="mt-4 px-6 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-colors">Fechar</button>
+                `;
+                document.body.appendChild(messageBox);
+
+                messageBox.querySelector('button').addEventListener('click', () => {
+                    document.body.removeChild(messageBox);
+                });
+            });
+
+
+            // Lógica do carrossel
+            const carouselTrack = document.querySelector('.carousel-track');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const slides = Array.from(carouselTrack.children);
+            const slideWidth = slides[0].getBoundingClientRect().width;
+            let currentSlideIndex = 0;
+
+            const updateCarousel = () => {
+                carouselTrack.style.transform = 'translateX(-' + slideWidth * currentSlideIndex + 'px)';
+            };
+
+            nextBtn.addEventListener('click', () => {
+                currentSlideIndex = (currentSlideIndex + 1) % slides.length;
+                updateCarousel();
+            });
+
+            prevBtn.addEventListener('click', () => {
+                currentSlideIndex = (currentSlideIndex - 1 + slides.length) % slides.length;
+                updateCarousel();
+            });
+
+            // Mostra o primeiro slide e ajusta o tamanho
+            updateCarousel();
+            window.addEventListener('resize', () => {
+                slideWidth = slides[0].getBoundingClientRect().width;
+                updateCarousel();
+            });
+        });
+    </script>
+
+</body>
+</html>
